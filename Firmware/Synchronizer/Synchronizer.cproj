@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>6.2</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>{072036cf-56d2-4eea-b468-5b9090767ff5}</ProjectGuid>
+    <ProjectGuid>{2c07ad88-52fa-488c-875b-346ca9866906}</ProjectGuid>
     <avrdevice>ATxmega32A4U</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,20 +12,20 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>synchronizer</AssemblyName>
-    <Name>synchronizer</Name>
-    <RootNamespace>synchronizer</RootNamespace>
+    <AssemblyName>Synchronizer</AssemblyName>
+    <Name>Synchronizer</Name>
+    <RootNamespace>Synchronizer</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <RamSnippetAddress />
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <OverrideVtorValue />
     <BootSegment>2</BootSegment>
-    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <eraseonlaunchrule>1</eraseonlaunchrule>
     <AsfFrameworkConfig>
       <framework-data xmlns="">
         <options />
@@ -38,58 +38,40 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
-    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
-    <avrtoolinterface>PDI</avrtoolinterface>
-    <com_atmel_avrdbg_tool_atmelice>
-      <ToolOptions>
-        <InterfaceProperties>
-          <PdiClock>4000000</PdiClock>
-        </InterfaceProperties>
-        <InterfaceName>PDI</InterfaceName>
-      </ToolOptions>
-      <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
-      <ToolNumber>J41800031896</ToolNumber>
-      <ToolName>Atmel-ICE</ToolName>
-    </com_atmel_avrdbg_tool_atmelice>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <AvrGcc>
-  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
-  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-  <avrgcc.compiler.symbols.DefSymbols>
-    <ListValues>
-      <Value>NDEBUG</Value>
-    </ListValues>
-  </avrgcc.compiler.symbols.DefSymbols>
-  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
-  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-  <avrgcc.linker.libraries.Libraries>
-    <ListValues>
-      <Value>libm</Value>
-      <Value>libATxmega32A4U-0.9.a</Value>
-      <Value>libATxmega32A4U-0.10.a</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.Libraries>
-  <avrgcc.linker.libraries.LibrarySearchPaths>
-    <ListValues>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware synchronizer\v1.0</Value>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware synchronizer\v1.0 READY</Value>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware harp core\core v1.0 READY\Debug</Value>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware harp core</Value>
-      <Value>C:\Users\Artur\Google Drive\CR harp\firmware synchronizer\v1.0 READY</Value>
-      <Value>C:\Users\CR Filipe\Documents\BitBucket\Device.Wear.Basestation\Firmware\Master</Value>
-      <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware\Synchronizer</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.LibrarySearchPaths>
-</AvrGcc>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+            <Value>libATxmega32A4U-0.10.a</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware_\Synchronizer\Synchronizer\Synchronizer</Value>
+            <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware_\Synchronizer\Synchronizer</Value>
+            <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware\Synchronizer</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.LibrarySearchPaths>
+      </AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -115,18 +97,13 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
-      <Value>libATxmega32A4U-0.9.a</Value>
       <Value>libATxmega32A4U-0.10.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
     <ListValues>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware synchronizer\v1.0</Value>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware synchronizer\v1.0 READY</Value>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware harp core\core v1.0 READY\Debug</Value>
-      <Value>C:\Users\CR Filipe\Google Drive CR Filipe\CR harp\firmware harp core</Value>
-      <Value>C:\Users\Artur\Google Drive\CR harp\firmware synchronizer\v1.0 READY</Value>
-      <Value>C:\Users\CR Filipe\Documents\BitBucket\Device.Wear.Basestation\Firmware\Master</Value>
+      <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware_\Synchronizer\Synchronizer\Synchronizer</Value>
+      <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware_\Synchronizer\Synchronizer</Value>
       <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware\Synchronizer</Value>
     </ListValues>
   </avrgcc.linker.libraries.LibrarySearchPaths>
