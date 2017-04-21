@@ -48,67 +48,67 @@ void init_ios(void);
 /* LEDIN0 */
 #define set_LEDIN0 clear_io(PORTD, 0)
 #define clr_LEDIN0 set_io(PORTD, 0)
-#define tgl_LEDIN0 toogle_io(PORTD, 0)
+#define tgl_LEDIN0 toggle_io(PORTD, 0)
 #define get_LEDIN0 read_io(PORTD, 0)
 
 /* LEDIN1 */
 #define set_LEDIN1 clear_io(PORTD, 1)
 #define clr_LEDIN1 set_io(PORTD, 1)
-#define tgl_LEDIN1 toogle_io(PORTD, 1)
+#define tgl_LEDIN1 toggle_io(PORTD, 1)
 #define get_LEDIN1 read_io(PORTD, 1)
 
 /* LEDIN2 */
 #define set_LEDIN2 clear_io(PORTD, 2)
 #define clr_LEDIN2 set_io(PORTD, 2)
-#define tgl_LEDIN2 toogle_io(PORTD, 2)
+#define tgl_LEDIN2 toggle_io(PORTD, 2)
 #define get_LEDIN2 read_io(PORTD, 2)
 
 /* LEDIN3 */
 #define set_LEDIN3 clear_io(PORTD, 3)
 #define clr_LEDIN3 set_io(PORTD, 3)
-#define tgl_LEDIN3 toogle_io(PORTD, 3)
+#define tgl_LEDIN3 toggle_io(PORTD, 3)
 #define get_LEDIN3 read_io(PORTD, 3)
 
 /* LEDIN4 */
 #define set_LEDIN4 clear_io(PORTD, 4)
 #define clr_LEDIN4 set_io(PORTD, 4)
-#define tgl_LEDIN4 toogle_io(PORTD, 4)
+#define tgl_LEDIN4 toggle_io(PORTD, 4)
 #define get_LEDIN4 read_io(PORTD, 4)
 
 /* LEDIN5 */
 #define set_LEDIN5 clear_io(PORTD, 5)
 #define clr_LEDIN5 set_io(PORTD, 5)
-#define tgl_LEDIN5 toogle_io(PORTD, 5)
+#define tgl_LEDIN5 toggle_io(PORTD, 5)
 #define get_LEDIN5 read_io(PORTD, 5)
 
 /* LEDIN6 */
 #define set_LEDIN6 clear_io(PORTC, 4)
 #define clr_LEDIN6 set_io(PORTC, 4)
-#define tgl_LEDIN6 toogle_io(PORTC, 4)
+#define tgl_LEDIN6 toggle_io(PORTC, 4)
 #define get_LEDIN6 read_io(PORTC, 4)
 
 /* LEDIN7 */
 #define set_LEDIN7 clear_io(PORTC, 5)
 #define clr_LEDIN7 set_io(PORTC, 5)
-#define tgl_LEDIN7 toogle_io(PORTC, 5)
+#define tgl_LEDIN7 toggle_io(PORTC, 5)
 #define get_LEDIN7 read_io(PORTC, 5)
 
 /* LEDIN8 */
 #define set_LEDIN8 clear_io(PORTC, 6)
 #define clr_LEDIN8 set_io(PORTC, 6)
-#define tgl_LEDIN8 toogle_io(PORTC, 6)
+#define tgl_LEDIN8 toggle_io(PORTC, 6)
 #define get_LEDIN8 read_io(PORTC, 6)
 
 /* LEDOUT0 */
 #define set_LEDOUT0 clear_io(PORTC, 7)
 #define clr_LEDOUT0 set_io(PORTC, 7)
-#define tgl_LEDOUT0 toogle_io(PORTC, 7)
+#define tgl_LEDOUT0 toggle_io(PORTC, 7)
 #define get_LEDOUT0 read_io(PORTC, 7)
 
 /* OUTPUT0 */
 #define set_OUTPUT0 set_io(PORTC, 0)
 #define clr_OUTPUT0 clear_io(PORTC, 0)
-#define tgl_OUTPUT0 toogle_io(PORTC, 0)
+#define tgl_OUTPUT0 toggle_io(PORTC, 0)
 #define get_OUTPUT0 read_io(PORTC, 0)
 
 

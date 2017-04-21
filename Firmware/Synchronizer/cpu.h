@@ -99,11 +99,11 @@ void wdt_reset_device(void);
 
 #define set_io(port, pin)				port.OUTSET = 1 << pin
 #define clear_io(port, pin)			port.OUTCLR = 1 << pin
-#define toogle_io(port, pin)			port.OUTTGL = 1 << pin
+#define toggle_io(port, pin)			port.OUTTGL = 1 << pin
 #define read_io(port, pin)				(*(&port.IN) & (1 << pin))
 #define set_io_mask(port, mask)		port.OUTSET = mask
 #define clear_io_mask(port, mask)	port.OUTCLR = mask
-#define toogle_io_mask(port, mask)	port.OUTTGL = mask
+#define toggle_io_mask(port, mask)	port.OUTTGL = mask
 
 void io_pin2in(PORT_t* port, uint8_t pin, uint8_t pull, uint8_t sense);
 void io_pin2out(PORT_t* port, uint8_t pin, uint8_t out, bool input_en);

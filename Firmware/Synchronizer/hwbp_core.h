@@ -95,6 +95,9 @@ void core_func_leave_speed_mode_and_go_to_standby_mode(void);
 // Used to create a specific timestamp that can be used when sending Events
 void core_func_update_user_timestamp(uint32_t seconds, uint16_t useconds);
 
+// Used to read the current user timestamps
+void core_func_read_user_timestamp(uint32_t *seconds, uint16_t *useconds);
+
 // Used to save the current timestamp
 void core_func_mark_user_timestamp(void);
 

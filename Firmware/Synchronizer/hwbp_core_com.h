@@ -2,7 +2,7 @@
 #define _HWBP_CORE_COM_H_
 
 #include <string.h>
-#include "cpu_1v1.h"
+#include "cpu.h"
 #include "hwbp_core_types.h"
 
 // com_mode
@@ -21,6 +21,31 @@
 #define HWBP_UART_CTS_INT_LEVEL	INT_LEVEL_HIGH
 
 #define HWBP_UART_RXBUFSIZ			MAX_PACKET_SIZE
+
+#if defined(__AVR_ATxmega16A4U__)
+    #define HWBP_UART_UART			USARTE0
+    #define HWBP_UART_PORT			PORTE
+    #define HWBP_UART_RX_pin		2
+    #define HWBP_UART_TX_pin		3
+
+    #define HWBP_UART_RX_ROUTINE_	ISR(USARTE0_RXC_vect/*, ISR_NAKED*/)
+    #define HWBP_UART_TX_ROUTINE_	ISR(USARTE0_DRE_vect/*, ISR_NAKED*/)
+
+
+    #define HWBP_UART_USE_FLOW_CONTROL	// comment this line if don't use
+    #define HWBP_UART_RTS_PORT		PORTE
+    #define HWBP_UART_RTS_pin		1
+    #define HWBP_UART_CTS_PORT		PORTE
+    #define HWBP_UART_CTS_pin		0
+
+    #define HWBP_UART_CTS_ROUTINE_		ISR(PORTE_INT0_vect/*, ISR_NAKED*/)
+    #define HWBP_UART_CTS_INT_N			0
+
+    #define hwbp_uart_leave_interrupt return/*reti();*/
+
+    /* Use as much as possible */
+    #define HWBP_UART_TXBUFSIZ		512
+#endif
 
 #if defined(__AVR_ATxmega32A4U__)
 	#define HWBP_UART_UART			USARTE0
