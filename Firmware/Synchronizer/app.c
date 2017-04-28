@@ -139,7 +139,7 @@ extern void read(void);
 uint16_t catch_counter = 0;
 void core_callback_t_before_exec(void)
 {
-	if ((app_regs.REG_INPUT_CATCH_MODE & MSK_CATCH_MODE) >= GM_INMODE_100Hz)
+    if ((app_regs.REG_INPUT_CATCH_MODE & MSK_CATCH_MODE) >= GM_INMODE_100Hz)
 	{
 		switch (app_regs.REG_INPUT_CATCH_MODE & MSK_CATCH_MODE)
 		{
