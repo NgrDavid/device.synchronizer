@@ -23,7 +23,7 @@ extern bool (*app_func_wr_pointer[])(void*);
 void hwbp_app_initialize(void)
 {
 	/* Start core */
-	core_func_start_core(1104, 1, 0, 1, 2, 0, (uint8_t*)(&app_regs), APP_NBYTES_OF_REG_BANK, APP_REGS_ADD_MAX - APP_REGS_ADD_MIN + 1);
+	core_func_start_core(1104, 1, 0, 1, 3, 0, (uint8_t*)(&app_regs), APP_NBYTES_OF_REG_BANK, APP_REGS_ADD_MAX - APP_REGS_ADD_MIN + 1);
 }
 
 /************************************************************************/
