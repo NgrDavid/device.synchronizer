@@ -20,10 +20,28 @@ extern bool (*app_func_wr_pointer[])(void*);
 /************************************************************************/
 /* Initialize app                                                       */
 /************************************************************************/
+static const uint8_t default_device_name[] = "Synchronizer";
+
 void hwbp_app_initialize(void)
-{
-	/* Start core */
-	core_func_start_core(1104, 1, 0, 1, 3, 0, (uint8_t*)(&app_regs), APP_NBYTES_OF_REG_BANK, APP_REGS_ADD_MAX - APP_REGS_ADD_MIN + 1);
+{	
+    /* Define versions */
+    uint8_t hwH = 1;
+    uint8_t hwL = 0;
+    uint8_t fwH = 1;
+    uint8_t fwL = 3;
+    uint8_t ass = 0;    
+    
+   	/* Start core */
+   	core_func_start_core(
+   	    1104,
+   	    hwH, hwL,
+   	    fwH, fwL,
+   	    ass,
+   	    (uint8_t*)(&app_regs),
+   	    APP_NBYTES_OF_REG_BANK,
+   	    APP_REGS_ADD_MAX - APP_REGS_ADD_MIN + 1,
+   	    default_device_name
+   	);
 }
 
 /************************************************************************/
@@ -78,7 +96,7 @@ void core_callback_registers_were_reinitialized(void)
 	app_regs.REG_INPUTS_STATE = ((~PORTA_IN) & 0x3F) | (((~PORTB_IN) & 0x7) << 6) | (PORTC_IN & 0x01 ? 0x2000 : 0) | (PORTA_IN & 0x80 ? 0x4000 : 0) | (PORTC_IN & 0x02 ? 0x8000 : 0);
 	if ((app_regs.REG_OUTPUT_MODE & MSK_OUTPUT_MODE) == GM_OUTMODE_INPUT0)
 	{
-		if (!get_INPUT0)
+		if (!read_INPUT0)
 		{
 			app_regs.REG_OUTPUTS = B_OUTPUT0;
 			if (core_bool_is_visual_enabled())
@@ -111,7 +129,7 @@ void core_callback_visualen_to_on(void)
 	PORTD_OUT = (PORTA_IN & 0x3F);
 	PORTC_OUT = (PORTC_OUT & 0x8F) | ((PORTB_IN & 0x7) << 4);
 
-	if (get_OUTPUT0)
+	if (read_OUTPUT0)
 		set_LEDOUT0;
 	else
 		clr_LEDOUT0;

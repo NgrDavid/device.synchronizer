@@ -15,20 +15,20 @@ void init_ios(void);
 // INPUT6                 Description: Input 6
 // INPUT7                 Description: Input 7
 // INPUT8                 Description: Input 8
-// ADD0                   Description: Address 0
-// ADD1                   Description: Address 1
+// ADD0                   Description: Adress 0
+// ADD1                   Description: Adress 1
 
-#define get_INPUT0 read_io(PORTA, 0)            // INPUT0
-#define get_INPUT1 read_io(PORTA, 1)            // INPUT1
-#define get_INPUT2 read_io(PORTA, 2)            // INPUT2
-#define get_INPUT3 read_io(PORTA, 3)            // INPUT3
-#define get_INPUT4 read_io(PORTA, 4)            // INPUT4
-#define get_INPUT5 read_io(PORTA, 5)            // INPUT5
-#define get_INPUT6 read_io(PORTB, 0)            // INPUT6
-#define get_INPUT7 read_io(PORTB, 1)            // INPUT7
-#define get_INPUT8 read_io(PORTB, 2)            // INPUT8
-#define get_ADD0 read_io(PORTA, 7)              // ADD0
-#define get_ADD1 read_io(PORTC, 1)              // ADD1
+#define read_INPUT0 read_io(PORTA, 0)           // INPUT0
+#define read_INPUT1 read_io(PORTA, 1)           // INPUT1
+#define read_INPUT2 read_io(PORTA, 2)           // INPUT2
+#define read_INPUT3 read_io(PORTA, 3)           // INPUT3
+#define read_INPUT4 read_io(PORTA, 4)           // INPUT4
+#define read_INPUT5 read_io(PORTA, 5)           // INPUT5
+#define read_INPUT6 read_io(PORTB, 0)           // INPUT6
+#define read_INPUT7 read_io(PORTB, 1)           // INPUT7
+#define read_INPUT8 read_io(PORTB, 2)           // INPUT8
+#define read_ADD0 read_io(PORTA, 7)             // ADD0
+#define read_ADD1 read_io(PORTC, 1)             // ADD1
 
 /************************************************************************/
 /* Definition of output pins                                            */
@@ -49,67 +49,67 @@ void init_ios(void);
 #define set_LEDIN0 clear_io(PORTD, 0)
 #define clr_LEDIN0 set_io(PORTD, 0)
 #define tgl_LEDIN0 toggle_io(PORTD, 0)
-#define get_LEDIN0 read_io(PORTD, 0)
+#define read_LEDIN0 read_io(PORTD, 0)
 
 /* LEDIN1 */
 #define set_LEDIN1 clear_io(PORTD, 1)
 #define clr_LEDIN1 set_io(PORTD, 1)
 #define tgl_LEDIN1 toggle_io(PORTD, 1)
-#define get_LEDIN1 read_io(PORTD, 1)
+#define read_LEDIN1 read_io(PORTD, 1)
 
 /* LEDIN2 */
 #define set_LEDIN2 clear_io(PORTD, 2)
 #define clr_LEDIN2 set_io(PORTD, 2)
 #define tgl_LEDIN2 toggle_io(PORTD, 2)
-#define get_LEDIN2 read_io(PORTD, 2)
+#define read_LEDIN2 read_io(PORTD, 2)
 
 /* LEDIN3 */
 #define set_LEDIN3 clear_io(PORTD, 3)
 #define clr_LEDIN3 set_io(PORTD, 3)
 #define tgl_LEDIN3 toggle_io(PORTD, 3)
-#define get_LEDIN3 read_io(PORTD, 3)
+#define read_LEDIN3 read_io(PORTD, 3)
 
 /* LEDIN4 */
 #define set_LEDIN4 clear_io(PORTD, 4)
 #define clr_LEDIN4 set_io(PORTD, 4)
 #define tgl_LEDIN4 toggle_io(PORTD, 4)
-#define get_LEDIN4 read_io(PORTD, 4)
+#define read_LEDIN4 read_io(PORTD, 4)
 
 /* LEDIN5 */
 #define set_LEDIN5 clear_io(PORTD, 5)
 #define clr_LEDIN5 set_io(PORTD, 5)
 #define tgl_LEDIN5 toggle_io(PORTD, 5)
-#define get_LEDIN5 read_io(PORTD, 5)
+#define read_LEDIN5 read_io(PORTD, 5)
 
 /* LEDIN6 */
 #define set_LEDIN6 clear_io(PORTC, 4)
 #define clr_LEDIN6 set_io(PORTC, 4)
 #define tgl_LEDIN6 toggle_io(PORTC, 4)
-#define get_LEDIN6 read_io(PORTC, 4)
+#define read_LEDIN6 read_io(PORTC, 4)
 
 /* LEDIN7 */
 #define set_LEDIN7 clear_io(PORTC, 5)
 #define clr_LEDIN7 set_io(PORTC, 5)
 #define tgl_LEDIN7 toggle_io(PORTC, 5)
-#define get_LEDIN7 read_io(PORTC, 5)
+#define read_LEDIN7 read_io(PORTC, 5)
 
 /* LEDIN8 */
 #define set_LEDIN8 clear_io(PORTC, 6)
 #define clr_LEDIN8 set_io(PORTC, 6)
 #define tgl_LEDIN8 toggle_io(PORTC, 6)
-#define get_LEDIN8 read_io(PORTC, 6)
+#define read_LEDIN8 read_io(PORTC, 6)
 
 /* LEDOUT0 */
 #define set_LEDOUT0 clear_io(PORTC, 7)
 #define clr_LEDOUT0 set_io(PORTC, 7)
 #define tgl_LEDOUT0 toggle_io(PORTC, 7)
-#define get_LEDOUT0 read_io(PORTC, 7)
+#define read_LEDOUT0 read_io(PORTC, 7)
 
 /* OUTPUT0 */
 #define set_OUTPUT0 set_io(PORTC, 0)
 #define clr_OUTPUT0 clear_io(PORTC, 0)
 #define tgl_OUTPUT0 toggle_io(PORTC, 0)
-#define get_OUTPUT0 read_io(PORTC, 0)
+#define read_OUTPUT0 read_io(PORTC, 0)
 
 
 /************************************************************************/
@@ -167,9 +167,9 @@ typedef struct
 #define B_INPUT6                           (1<<6)       // Input 6
 #define B_INPUT7                           (1<<7)       // Input 7
 #define B_INPUT8                           (1<<8)       // Input 8
-#define B_OUTPUT0_STATE                    (1<<14)      // Reflects the Output 0 state
-#define B_ADRESS0                          (1<<15)      // Address 0
-#define B_ADRESS1                          (1<<16)      // Address 1
+#define B_OUTPUT0_STATE                    (1<<13)      // Reflects the Output 0 state
+#define B_ADRESS0                          (1<<14)      // Address 0
+#define B_ADRESS1                          (1<<15)      // Address 1
 #define B_OUTPUT0                          (1<<0)       // Output 0
 #define MSK_CATCH_MODE                     (15<<0)      // Catch mode
 #define GM_INMODE_DISABLED                 (0<<0)       // Catch is disabled
@@ -182,7 +182,7 @@ typedef struct
 #define GM_INMODE_1000Hz                   (7<<0)       // Catched at a frequency of 1 KHz
 #define GM_INMODE_2000Hz                   (8<<0)       // Catched at a frequency of 2 KHz
 #define MSK_OUTPUT_MODE                    (7<<0)       // Output mode
-#define GM_OUTMODE_NOT_USED                (0<<0)       // Not used by the ctach
+#define GM_OUTMODE_NOT_USED                (0<<0)       // Not used by the catch
 #define GM_OUTMODE_TOGGLE                  (1<<0)       // Output toggles everytime the inputs are catched
 #define GM_OUTMODE_INPUT0                  (2<<0)       // Output is equal to Input 0 (bit INPUT0)
 #define GM_OUTMODE_PULSE_5mS               (3<<0)       // Output has a positive pulse of 5 milliseconds everytime the inputs are catched

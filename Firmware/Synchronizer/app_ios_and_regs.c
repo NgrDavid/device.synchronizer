@@ -30,17 +30,6 @@ void init_ios(void)
 	io_set_int(&PORTB, INT_LEVEL_LOW, 0, (1<<1), false);                 // INPUT7
 	io_set_int(&PORTB, INT_LEVEL_LOW, 0, (1<<2), false);                 // INPUT8
 
-	/* Interrupt vectors */
-	//ISR(PORTA_INT1_vect, ISR_NAKED) {}                                 // INPUT0
-	//ISR(PORTA_INT0_vect, ISR_NAKED) {}                                 // INPUT1
-	//ISR(PORTA_INT0_vect, ISR_NAKED) {}                                 // INPUT2
-	//ISR(PORTA_INT0_vect, ISR_NAKED) {}                                 // INPUT3
-	//ISR(PORTA_INT0_vect, ISR_NAKED) {}                                 // INPUT4
-	//ISR(PORTA_INT0_vect, ISR_NAKED) {}                                 // INPUT5
-	//ISR(PORTB_INT0_vect, ISR_NAKED) {}                                 // INPUT6
-	//ISR(PORTB_INT0_vect, ISR_NAKED) {}                                 // INPUT7
-	//ISR(PORTB_INT0_vect, ISR_NAKED) {}                                 // INPUT8
-
 	/* Configure output pins */
 	io_pin2out(&PORTD, 0, OUT_IO_DIGITAL, IN_EN_IO_DIS);                 // LEDIN0
 	io_pin2out(&PORTD, 1, OUT_IO_DIGITAL, IN_EN_IO_DIS);                 // LEDIN1

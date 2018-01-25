@@ -52,7 +52,7 @@ bool app_write_REG_INPUTS_STATE(void *a)
 /************************************************************************/
 void app_read_REG_OUTPUTS(void)
 {
-	app_regs.REG_OUTPUTS = get_OUTPUT0 ? 1 : 0;
+	app_regs.REG_OUTPUTS = read_OUTPUT0 ? 1 : 0;
 }
 
 bool app_write_REG_OUTPUTS(void *a)
@@ -147,7 +147,7 @@ bool app_write_REG_OUTPUT_MODE(void *a)
 	switch (reg)
 	{
 		case GM_OUTMODE_INPUT0:
-			if (get_INPUT0)
+			if (read_INPUT0)
 			{
 				clr_OUTPUT0;
 				clr_LEDOUT0;
@@ -276,7 +276,7 @@ void read(void)
 			break;
 
 		case GM_OUTMODE_INPUT0:
-			if (get_INPUT0)
+			if (read_INPUT0)
 			{
 				clr_OUTPUT0;
 				clr_LEDOUT0;
@@ -359,12 +359,12 @@ ISR(PORTA_INT1_vect, ISR_NAKED)
 			break;
 
 		case GM_INMODE_RISE_ON_INPUT0:
-			if (!get_INPUT0)
+			if (!read_INPUT0)
 				read();
 			break;
 
 		case GM_INMODE_FALL_ON_INPUT0:
-			if (get_INPUT0)
+			if (read_INPUT0)
 				read();
 			break;
 	}
