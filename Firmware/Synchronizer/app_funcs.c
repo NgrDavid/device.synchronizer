@@ -259,7 +259,12 @@ bool app_write_REG_EVNT_ENABLE(void *a)
 /************************************************************************/
 void read(void)
 {
-	app_regs.REG_INPUTS_STATE = ((~PORTA_IN) & 0x3F) | (((~PORTB_IN) & 0x7) << 6) | (PORTC_IN & 0x01 ? 0x2000 : 0) | (PORTA_IN & 0x80 ? 0x4000 : 0) | (PORTC_IN & 0x02 ? 0x8000 : 0);
+	uint16_t digital_inputs = ((~PORTA_IN) & 0x3F) | (((~PORTB_IN) & 0x7) << 6) | (PORTC_IN & 0x01 ? 0x2000 : 0) | (PORTA_IN & 0x80 ? 0x4000 : 0) | (PORTC_IN & 0x02 ? 0x8000 : 0);
+    
+    if ((digital_inputs & 0x01FF) == (app_regs.REG_INPUTS_STATE & 0x01FF))
+        return;
+    
+    app_regs.REG_INPUTS_STATE = digital_inputs;
 
 	if (core_bool_is_visual_enabled())
 	{
