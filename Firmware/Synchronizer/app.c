@@ -153,7 +153,7 @@ void core_callback_device_to_speed(void) {}
 /************************************************************************/
 /* Callbacks: 1 ms timer                                                */
 /************************************************************************/
-extern void read(void);
+extern void read(bool filter_equal_readings);
 uint16_t catch_counter = 0;
 void core_callback_t_before_exec(void)
 {
@@ -163,26 +163,26 @@ void core_callback_t_before_exec(void)
 		{
 			case GM_INMODE_100Hz:
 				if ((catch_counter++ % 20) == 0)
-					read();
+					read(false);
 				break;
 								
 			case GM_INMODE_250Hz:
 				if ((catch_counter++ % 8) == 0)
-					read();
+					read(false);
 				break;
 				
 			case GM_INMODE_500Hz:
 				if ((catch_counter++ % 4) == 0)
-					read();
+					read(false);
 				break;
 				
 			case GM_INMODE_1000Hz:
 				if ((catch_counter++ % 2) == 0)
-					read();
+					read(false);
 				break;
 				
 			case GM_INMODE_2000Hz:
-				read();
+				read(false);
 				break;
 		}
 	}

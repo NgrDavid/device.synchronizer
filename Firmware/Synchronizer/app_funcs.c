@@ -257,12 +257,15 @@ bool app_write_REG_EVNT_ENABLE(void *a)
 /************************************************************************/
 /* CATCH                                                                */
 /************************************************************************/
-void read(void)
-{
-	uint16_t digital_inputs = ((~PORTA_IN) & 0x3F) | (((~PORTB_IN) & 0x7) << 6) | (PORTC_IN & 0x01 ? 0x2000 : 0) | (PORTA_IN & 0x80 ? 0x4000 : 0) | (PORTC_IN & 0x02 ? 0x8000 : 0);
+void read(bool filter_equal_readings)
+{   
+    uint16_t digital_inputs = ((~PORTA_IN) & 0x3F) | (((~PORTB_IN) & 0x7) << 6) | (PORTC_IN & 0x01 ? 0x2000 : 0) | (PORTA_IN & 0x80 ? 0x4000 : 0) | (PORTC_IN & 0x02 ? 0x8000 : 0);
     
-    if ((digital_inputs & 0x01FF) == (app_regs.REG_INPUTS_STATE & 0x01FF))
-        return;
+    if (filter_equal_readings)
+    {
+        if ((digital_inputs & 0x01FF) == (app_regs.REG_INPUTS_STATE & 0x01FF))
+            return;        
+    }
     
     app_regs.REG_INPUTS_STATE = digital_inputs;
 
@@ -360,17 +363,17 @@ ISR(PORTA_INT1_vect, ISR_NAKED)
 	switch (app_regs.REG_INPUT_CATCH_MODE & MSK_CATCH_MODE)
 	{
 		case GM_INMODE_WHEN_ANY_CHANGE:
-			read();
+			read(true);
 			break;
 
 		case GM_INMODE_RISE_ON_INPUT0:
 			if (!read_INPUT0)
-				read();
+				read(true);
 			break;
 
 		case GM_INMODE_FALL_ON_INPUT0:
 			if (read_INPUT0)
-				read();
+				read(true);
 			break;
 	}
 
@@ -381,7 +384,7 @@ ISR(PORTA_INT1_vect, ISR_NAKED)
 ISR(PORTA_INT0_vect, ISR_NAKED)
 {	
 	if ((app_regs.REG_INPUT_CATCH_MODE & MSK_CATCH_MODE) == GM_INMODE_WHEN_ANY_CHANGE)
-		read();
+		read(true);
 
 	reti();
 }
@@ -390,7 +393,7 @@ ISR(PORTA_INT0_vect, ISR_NAKED)
 ISR(PORTB_INT0_vect, ISR_NAKED)
 {
 	if ((app_regs.REG_INPUT_CATCH_MODE & MSK_CATCH_MODE) == GM_INMODE_WHEN_ANY_CHANGE)
-		read();
+		read(true);
 
 	reti();
 }
