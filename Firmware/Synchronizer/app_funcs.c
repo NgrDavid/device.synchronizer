@@ -270,9 +270,9 @@ void read(bool filter_equal_readings)
     app_regs.REG_INPUTS_STATE = digital_inputs;
 
 	if (core_bool_is_visual_enabled())
-	{
-		PORTD_OUT = (PORTA_IN & 0x3F);
-		PORTC_OUT = (PORTC_OUT & 0x8F) | ((PORTB_IN & 0x7) << 4);
+	{        
+        PORTD_OUT = ~(*((uint8_t*)(&app_regs.REG_INPUTS_STATE)) & 0x3F);
+        PORTC_OUT = (PORTC_OUT & 0x8F) | ((~((uint8_t)(app_regs.REG_INPUTS_STATE >> 2))) & 0x70);
 	}
 
 	switch (app_regs.REG_OUTPUT_MODE & MSK_OUTPUT_MODE)
