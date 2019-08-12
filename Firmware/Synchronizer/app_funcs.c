@@ -143,6 +143,8 @@ void app_read_REG_OUTPUT_MODE(void)
 bool app_write_REG_OUTPUT_MODE(void *a)
 {
 	uint8_t reg = *((uint8_t*)a) & MSK_OUTPUT_MODE;
+   
+   uint16_t digital_inputs;
 
 	switch (reg)
 	{
@@ -155,7 +157,8 @@ bool app_write_REG_OUTPUT_MODE(void *a)
 			else
 			{
 				set_OUTPUT0;
-				set_LEDOUT0;
+            if (core_bool_is_visual_enabled())
+				   set_LEDOUT0;
 			}
 			break;
 
@@ -167,6 +170,23 @@ bool app_write_REG_OUTPUT_MODE(void *a)
 			clr_OUTPUT0;
 			clr_LEDOUT0;
 			break;
+      
+      case GM_OUTMODE_OR:
+         digital_inputs = ((~PORTA_IN) & 0x3F) | (((~PORTB_IN) & 0x7) << 6);
+         
+         if (digital_inputs)
+         {
+            set_OUTPUT0;
+            if (core_bool_is_visual_enabled())
+               set_LEDOUT0;
+         }
+         else
+         {
+            clr_OUTPUT0;
+            clr_LEDOUT0;
+         }
+         
+         break;
 
 		case GM_OUTMODE_NOT_USED:
 		case GM_OUTMODE_TOGGLE:
@@ -328,6 +348,19 @@ void read(bool filter_equal_readings)
 			if (core_bool_is_visual_enabled())
 				set_LEDOUT0;
 			break;
+         
+      case GM_OUTMODE_OR:
+         if (digital_inputs & 0x1FF)
+         {
+            set_OUTPUT0;
+            if (core_bool_is_visual_enabled())
+               set_LEDOUT0;
+         }  
+         else
+         {
+            clr_OUTPUT0;
+            clr_LEDOUT0;
+         }
 	}
 
 

@@ -181,7 +181,7 @@ typedef struct
 #define GM_INMODE_500Hz                    (6<<0)       // Catched at a frequency of 500 Hz
 #define GM_INMODE_1000Hz                   (7<<0)       // Catched at a frequency of 1 KHz
 #define GM_INMODE_2000Hz                   (8<<0)       // Catched at a frequency of 2 KHz
-#define MSK_OUTPUT_MODE                    (7<<0)       // Output mode
+#define MSK_OUTPUT_MODE                    (15<<0)      // Output mode
 #define GM_OUTMODE_NOT_USED                (0<<0)       // Not used by the catch
 #define GM_OUTMODE_TOGGLE                  (1<<0)       // Output toggles everytime the inputs are catched
 #define GM_OUTMODE_INPUT0                  (2<<0)       // Output is equal to Input 0 (bit INPUT0)
@@ -190,6 +190,7 @@ typedef struct
 #define GM_OUTMODE_PULSE_1mS               (5<<0)       // Output has a positive pulse of 1 milliseconds everytime the inputs are catched
 #define GM_OUTMODE_PULSE_500uS             (6<<0)       // Output has a positive pulse of 500 microseconds everytime the inputs are catched
 #define GM_OUTMODE_PULSE_250uS             (7<<0)       // Output has a positive pulse of 250 microseconds everytime the inputs are catched
+#define GM_OUTMODE_OR                      (8<<0)       // Logic OR of all the inputs
 #define B_EVT0                             (1<<0)       // Event of register INPUTS_STATE
 
 #endif /* _APP_REGS_H_ */
