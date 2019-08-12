@@ -74,7 +74,7 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
-      <Value>libATxmega32A4U-1.4.a</Value>
+      <Value>libATxmega32A4U-1.6.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
@@ -110,7 +110,7 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
-      <Value>libATxmega32A4U-1.4.a</Value>
+      <Value>libATxmega32A4U-1.6.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
