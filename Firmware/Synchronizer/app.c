@@ -26,10 +26,21 @@ void hwbp_app_initialize(void)
 {	
     /* Define versions */
     uint8_t hwH = 1;
-    uint8_t hwL = 0;
+    uint8_t hwL;
     uint8_t fwH = 1;
     uint8_t fwL = 5;
-    uint8_t ass = 0;    
+    uint8_t ass = 0;
+    
+    io_pin2in(&PORTB, 3, PULL_IO_UP, SENSE_IO_EDGES_BOTH);
+    
+    if (read_io(PORTB, 3))
+    {
+       hwL = 0;
+    }
+    else
+    {
+       hwL = 1;
+    }
     
    	/* Start core */
    	core_func_start_core(
