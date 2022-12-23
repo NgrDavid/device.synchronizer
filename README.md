@@ -2,7 +2,7 @@
 
 Used to synchronize and align the different apparatus and devices present in a complex setup. It timestamps each rising or falling edge of the 9 digital input signals. The sampling of the inputs can also be configured to use a ﬁxed sampling frequency.
 
-![harpsynchronizer](./docs/assets/pcb.png)
+![harpsynchronizer](./Assets/pcb.png)
 
 ### Key Features ###
 
