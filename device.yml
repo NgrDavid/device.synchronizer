@@ -1,0 +1,109 @@
+%YAML 1.1
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/harp-tech/reflex-generator/main/schema/device.json
+device: Synchronizer
+whoAmI: 1104
+firmwareVersion: "1.6"
+hardwareTargets: "1.1" # also 1.0 
+registers:
+  DigitalInputState:
+    address: 32
+    access: Event
+    type: U16
+    maskType: DigitalInputs
+    description: State of the digital input pins. An event will be emitted when the value of any digital input pin changes.
+  DigitalOutputState:
+    address: 33
+    access: Write
+    type: U8
+    maskType: DigitalOutputs
+    description: Status of the digital output pin 0.
+  DigitalInputsCatch:
+    address: 34
+    access: Write
+    type: U8
+    maskType: DigitalInputsCatchMode
+    description: Sets the catch mode for digital inputs.
+  DO0Toggle:
+    address: 35
+    access: Write
+    type: U8
+    maskType: DO0ToggleConfig
+    description: Configures how the digital output behaves.
+  Reserved0: 
+    address: 36
+    type: U8
+    access: Read
+    description: Reserved for future use
+    visibility: private
+  Reserved1: 
+    address: 37
+    type: U8
+    access: Read
+    description: Reserved for future use
+    visibility: private
+  Reserved2: 
+    address: 38
+    type: U8
+    access: Read
+    description: Reserved for future use
+    visibility: private
+  Reserved3: 
+    address: 39
+    type: U8
+    access: Read
+    description: Reserved for future use
+    visibility: private
+  EnableEvents:
+    address: 40
+    type: U8
+    access: Write
+    maskType: SynchronizerEvents
+    description: Specifies all the active events in the device.
+bitMasks:
+  DigitalInputs:
+    description: Specifies the state of port digital input lines.
+    bits:
+      DI0: 0x1
+      DI1: 0x2
+      DI2: 0x3
+      DI3: 0x4
+      DI4: 0x5
+      DI5: 0x6
+      DI6: 0x7
+      DI7: 0x8
+      DI8: 0x9
+  DigitalOutputs:
+    description: Specifies the state of the digital output pins.
+    bits:
+      DO0: 0x0
+  SynchronizerEvents:
+    description: The events that can be enabled/disabled.
+    bits:
+      DigitalInputState: 0x1
+groupMasks:
+  DigitalInputsCatchMode:
+    description: Available modes for catching/sampling the digital inputs. 
+    values:
+      None: 0
+      AnyInputChange: 1
+      DI0RisingEdge: 2
+      DI0FallingEdge: 3
+      Sampling100Hz: 4
+      Sampling250Hz: 5
+      Sampling500Hz: 6
+      Sampling1000Hz: 7
+      Sampling2000Hz: 8
+  DO0ToggleConfig:
+    description: Available configuration for the DO0. 
+    values:
+      None: 0
+      ToggleAnyInputChange: 1
+      MimicDI0: 2
+      Pulse5msAnyInputChange: 3
+      Pulse2msAnyInputChange: 4
+      Pulse1msAnyInputChange: 5
+      Pulse500usAnyInputChange: 6
+      Pulse250usAnyInputChange: 7
+      LogicOrInputs: 8
+      

@@ -1,0 +1,25 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C99E8EB4-D018-44BC-9A55-FC3C6F9B2E02}") = "Harp.Synchronizer", "Harp.Synchronizer\Harp.Synchronizer.csproj", "{68508D42-8494-48D4-BB83-E5215FDADE4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68508D42-8494-48D4-BB83-E5215FDADE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68508D42-8494-48D4-BB83-E5215FDADE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68508D42-8494-48D4-BB83-E5215FDADE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68508D42-8494-48D4-BB83-E5215FDADE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B954BFF7-6241-401B-92C1-F833AC6A45C8}
+	EndGlobalSection
+EndGlobal
