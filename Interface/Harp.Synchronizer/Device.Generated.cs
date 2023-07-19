@@ -921,11 +921,11 @@ namespace Harp.Synchronizer
         DI1 = 0x2,
         DI2 = 0x3,
         DI3 = 0x4,
-        DI4 = 0x5,
-        DI5 = 0x6,
-        DI6 = 0x7,
-        DI7 = 0x8,
-        DI8 = 0x9
+        DI4 = 0x8,
+        DI5 = 0x10,
+        DI6 = 0x20,
+        DI7 = 0x40,
+        DI8 = 0x80
     }
 
     /// <summary>
@@ -934,7 +934,7 @@ namespace Harp.Synchronizer
     [Flags]
     public enum DigitalOutputs : byte
     {
-        DO0 = 0x0
+        DO0 = 0x1
     }
 
     /// <summary>

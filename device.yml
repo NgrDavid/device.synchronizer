@@ -68,15 +68,15 @@ bitMasks:
       DI1: 0x2
       DI2: 0x3
       DI3: 0x4
-      DI4: 0x5
-      DI5: 0x6
-      DI6: 0x7
-      DI7: 0x8
-      DI8: 0x9
+      DI4: 0x8
+      DI5: 0x10
+      DI6: 0x20
+      DI7: 0x40
+      DI8: 0x80
   DigitalOutputs:
     description: Specifies the state of the digital output pins.
     bits:
-      DO0: 0x0
+      DO0: 0x1
   SynchronizerEvents:
     description: The events that can be enabled/disabled.
     bits:
