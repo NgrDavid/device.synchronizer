@@ -40,7 +40,7 @@ namespace Harp.Synchronizer
             { 32, typeof(DigitalInputState) },
             { 33, typeof(DigitalOutputState) },
             { 34, typeof(DigitalInputsCatch) },
-            { 35, typeof(DO0Toggle) },
+            { 35, typeof(DO0Config) },
             { 40, typeof(EnableEvents) }
         };
     }
@@ -73,12 +73,12 @@ namespace Harp.Synchronizer
     /// <seealso cref="DigitalInputState"/>
     /// <seealso cref="DigitalOutputState"/>
     /// <seealso cref="DigitalInputsCatch"/>
-    /// <seealso cref="DO0Toggle"/>
+    /// <seealso cref="DO0Config"/>
     /// <seealso cref="EnableEvents"/>
     [XmlInclude(typeof(DigitalInputState))]
     [XmlInclude(typeof(DigitalOutputState))]
     [XmlInclude(typeof(DigitalInputsCatch))]
-    [XmlInclude(typeof(DO0Toggle))]
+    [XmlInclude(typeof(DO0Config))]
     [XmlInclude(typeof(EnableEvents))]
     [Description("Filters register-specific messages reported by the Synchronizer device.")]
     public class FilterMessage : FilterMessageBuilder, INamedElement
@@ -104,17 +104,17 @@ namespace Harp.Synchronizer
     /// <seealso cref="DigitalInputState"/>
     /// <seealso cref="DigitalOutputState"/>
     /// <seealso cref="DigitalInputsCatch"/>
-    /// <seealso cref="DO0Toggle"/>
+    /// <seealso cref="DO0Config"/>
     /// <seealso cref="EnableEvents"/>
     [XmlInclude(typeof(DigitalInputState))]
     [XmlInclude(typeof(DigitalOutputState))]
     [XmlInclude(typeof(DigitalInputsCatch))]
-    [XmlInclude(typeof(DO0Toggle))]
+    [XmlInclude(typeof(DO0Config))]
     [XmlInclude(typeof(EnableEvents))]
     [XmlInclude(typeof(TimestampedDigitalInputState))]
     [XmlInclude(typeof(TimestampedDigitalOutputState))]
     [XmlInclude(typeof(TimestampedDigitalInputsCatch))]
-    [XmlInclude(typeof(TimestampedDO0Toggle))]
+    [XmlInclude(typeof(TimestampedDO0Config))]
     [XmlInclude(typeof(TimestampedEnableEvents))]
     [Description("Filters and selects specific messages reported by the Synchronizer device.")]
     public partial class Parse : ParseBuilder, INamedElement
@@ -137,12 +137,12 @@ namespace Harp.Synchronizer
     /// <seealso cref="DigitalInputState"/>
     /// <seealso cref="DigitalOutputState"/>
     /// <seealso cref="DigitalInputsCatch"/>
-    /// <seealso cref="DO0Toggle"/>
+    /// <seealso cref="DO0Config"/>
     /// <seealso cref="EnableEvents"/>
     [XmlInclude(typeof(DigitalInputState))]
     [XmlInclude(typeof(DigitalOutputState))]
     [XmlInclude(typeof(DigitalInputsCatch))]
-    [XmlInclude(typeof(DO0Toggle))]
+    [XmlInclude(typeof(DO0Config))]
     [XmlInclude(typeof(EnableEvents))]
     [Description("Formats a sequence of values as specific Synchronizer register messages.")]
     public partial class Format : FormatBuilder, INamedElement
@@ -453,70 +453,70 @@ namespace Harp.Synchronizer
     /// Represents a register that configures how the digital output behaves.
     /// </summary>
     [Description("Configures how the digital output behaves.")]
-    public partial class DO0Toggle
+    public partial class DO0Config
     {
         /// <summary>
-        /// Represents the address of the <see cref="DO0Toggle"/> register. This field is constant.
+        /// Represents the address of the <see cref="DO0Config"/> register. This field is constant.
         /// </summary>
         public const int Address = 35;
 
         /// <summary>
-        /// Represents the payload type of the <see cref="DO0Toggle"/> register. This field is constant.
+        /// Represents the payload type of the <see cref="DO0Config"/> register. This field is constant.
         /// </summary>
         public const PayloadType RegisterType = PayloadType.U8;
 
         /// <summary>
-        /// Represents the length of the <see cref="DO0Toggle"/> register. This field is constant.
+        /// Represents the length of the <see cref="DO0Config"/> register. This field is constant.
         /// </summary>
         public const int RegisterLength = 1;
 
         /// <summary>
-        /// Returns the payload data for <see cref="DO0Toggle"/> register messages.
+        /// Returns the payload data for <see cref="DO0Config"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the message payload.</returns>
-        public static DO0ToggleConfig GetPayload(HarpMessage message)
+        public static DO0ConfigMode GetPayload(HarpMessage message)
         {
-            return (DO0ToggleConfig)message.GetPayloadByte();
+            return (DO0ConfigMode)message.GetPayloadByte();
         }
 
         /// <summary>
-        /// Returns the timestamped payload data for <see cref="DO0Toggle"/> register messages.
+        /// Returns the timestamped payload data for <see cref="DO0Config"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<DO0ToggleConfig> GetTimestampedPayload(HarpMessage message)
+        public static Timestamped<DO0ConfigMode> GetTimestampedPayload(HarpMessage message)
         {
             var payload = message.GetTimestampedPayloadByte();
-            return Timestamped.Create((DO0ToggleConfig)payload.Value, payload.Seconds);
+            return Timestamped.Create((DO0ConfigMode)payload.Value, payload.Seconds);
         }
 
         /// <summary>
-        /// Returns a Harp message for the <see cref="DO0Toggle"/> register.
+        /// Returns a Harp message for the <see cref="DO0Config"/> register.
         /// </summary>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="DO0Toggle"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="DO0Config"/> register
         /// with the specified message type and payload.
         /// </returns>
-        public static HarpMessage FromPayload(MessageType messageType, DO0ToggleConfig value)
+        public static HarpMessage FromPayload(MessageType messageType, DO0ConfigMode value)
         {
             return HarpMessage.FromByte(Address, messageType, (byte)value);
         }
 
         /// <summary>
-        /// Returns a timestamped Harp message for the <see cref="DO0Toggle"/>
+        /// Returns a timestamped Harp message for the <see cref="DO0Config"/>
         /// register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="DO0Toggle"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="DO0Config"/> register
         /// with the specified message type, timestamp, and payload.
         /// </returns>
-        public static HarpMessage FromPayload(double timestamp, MessageType messageType, DO0ToggleConfig value)
+        public static HarpMessage FromPayload(double timestamp, MessageType messageType, DO0ConfigMode value)
         {
             return HarpMessage.FromByte(Address, timestamp, messageType, (byte)value);
         }
@@ -524,25 +524,25 @@ namespace Harp.Synchronizer
 
     /// <summary>
     /// Provides methods for manipulating timestamped messages from the
-    /// DO0Toggle register.
+    /// DO0Config register.
     /// </summary>
-    /// <seealso cref="DO0Toggle"/>
-    [Description("Filters and selects timestamped messages from the DO0Toggle register.")]
-    public partial class TimestampedDO0Toggle
+    /// <seealso cref="DO0Config"/>
+    [Description("Filters and selects timestamped messages from the DO0Config register.")]
+    public partial class TimestampedDO0Config
     {
         /// <summary>
-        /// Represents the address of the <see cref="DO0Toggle"/> register. This field is constant.
+        /// Represents the address of the <see cref="DO0Config"/> register. This field is constant.
         /// </summary>
-        public const int Address = DO0Toggle.Address;
+        public const int Address = DO0Config.Address;
 
         /// <summary>
-        /// Returns timestamped payload data for <see cref="DO0Toggle"/> register messages.
+        /// Returns timestamped payload data for <see cref="DO0Config"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<DO0ToggleConfig> GetPayload(HarpMessage message)
+        public static Timestamped<DO0ConfigMode> GetPayload(HarpMessage message)
         {
-            return DO0Toggle.GetTimestampedPayload(message);
+            return DO0Config.GetTimestampedPayload(message);
         }
     }
 
@@ -650,12 +650,12 @@ namespace Harp.Synchronizer
     /// <seealso cref="CreateDigitalInputStatePayload"/>
     /// <seealso cref="CreateDigitalOutputStatePayload"/>
     /// <seealso cref="CreateDigitalInputsCatchPayload"/>
-    /// <seealso cref="CreateDO0TogglePayload"/>
+    /// <seealso cref="CreateDO0ConfigPayload"/>
     /// <seealso cref="CreateEnableEventsPayload"/>
     [XmlInclude(typeof(CreateDigitalInputStatePayload))]
     [XmlInclude(typeof(CreateDigitalOutputStatePayload))]
     [XmlInclude(typeof(CreateDigitalInputsCatchPayload))]
-    [XmlInclude(typeof(CreateDO0TogglePayload))]
+    [XmlInclude(typeof(CreateDO0ConfigPayload))]
     [XmlInclude(typeof(CreateEnableEventsPayload))]
     [Description("Creates standard message payloads for the Synchronizer device.")]
     public partial class CreateMessage : CreateMessageBuilder, INamedElement
@@ -819,16 +819,16 @@ namespace Harp.Synchronizer
     /// Represents an operator that creates a sequence of message payloads
     /// that configures how the digital output behaves.
     /// </summary>
-    [DisplayName("DO0TogglePayload")]
+    [DisplayName("DO0ConfigPayload")]
     [WorkflowElementCategory(ElementCategory.Transform)]
     [Description("Creates a sequence of message payloads that configures how the digital output behaves.")]
-    public partial class CreateDO0TogglePayload : HarpCombinator
+    public partial class CreateDO0ConfigPayload : HarpCombinator
     {
         /// <summary>
         /// Gets or sets the value that configures how the digital output behaves.
         /// </summary>
         [Description("The value that configures how the digital output behaves.")]
-        public DO0ToggleConfig Value { get; set; }
+        public DO0ConfigMode Value { get; set; }
 
         /// <summary>
         /// Creates an observable sequence that contains a single message
@@ -859,7 +859,7 @@ namespace Harp.Synchronizer
         /// </returns>
         public IObservable<HarpMessage> Process<TSource>(IObservable<TSource> source)
         {
-            return source.Select(_ => DO0Toggle.FromPayload(MessageType, Value));
+            return source.Select(_ => DO0Config.FromPayload(MessageType, Value));
         }
     }
 
@@ -965,7 +965,7 @@ namespace Harp.Synchronizer
     /// <summary>
     /// Available configuration for the DO0.
     /// </summary>
-    public enum DO0ToggleConfig : byte
+    public enum DO0ConfigMode : byte
     {
         None = 0,
         ToggleAnyInputChange = 1,

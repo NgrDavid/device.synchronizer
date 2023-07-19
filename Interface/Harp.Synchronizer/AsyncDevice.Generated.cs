@@ -145,39 +145,39 @@ namespace Harp.Synchronizer
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the DO0Toggle register.
+        /// Asynchronously reads the contents of the DO0Config register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DO0ToggleConfig> ReadDO0ToggleAsync()
+        public async Task<DO0ConfigMode> ReadDO0ConfigAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Toggle.Address));
-            return DO0Toggle.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Config.Address));
+            return DO0Config.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the DO0Toggle register.
+        /// Asynchronously reads the timestamped contents of the DO0Config register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DO0ToggleConfig>> ReadTimestampedDO0ToggleAsync()
+        public async Task<Timestamped<DO0ConfigMode>> ReadTimestampedDO0ConfigAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Toggle.Address));
-            return DO0Toggle.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Config.Address));
+            return DO0Config.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the DO0Toggle register.
+        /// Asynchronously writes a value to the DO0Config register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteDO0ToggleAsync(DO0ToggleConfig value)
+        public async Task WriteDO0ConfigAsync(DO0ConfigMode value)
         {
-            var request = DO0Toggle.FromPayload(MessageType.Write, value);
+            var request = DO0Config.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
         }
 

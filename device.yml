@@ -24,11 +24,11 @@ registers:
     type: U8
     maskType: DigitalInputsCatchMode
     description: Sets the catch mode for digital inputs.
-  DO0Toggle:
+  DO0Config:
     address: 35
     access: Write
     type: U8
-    maskType: DO0ToggleConfig
+    maskType: DO0ConfigMode
     description: Configures how the digital output behaves.
   Reserved0: 
     address: 36
@@ -94,7 +94,7 @@ groupMasks:
       Sampling500Hz: 6
       Sampling1000Hz: 7
       Sampling2000Hz: 8
-  DO0ToggleConfig:
+  DO0ConfigMode:
     description: Available configuration for the DO0. 
     values:
       None: 0
