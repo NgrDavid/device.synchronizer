@@ -4,7 +4,7 @@
 device: Synchronizer
 whoAmI: 1104
 firmwareVersion: "1.6"
-hardwareTargets: "1.1" # also 1.0 
+hardwareTargets: "1.1" # also 1.0
 registers:
   DigitalInputState:
     address: 32
@@ -77,7 +77,7 @@ groupMasks:
     description: Available modes for catching/sampling the digital inputs.
     values:
       None: 0
-      AnyInputToggle: 1
+      InputsChange: 1
       DI0RisingEdge: 2
       DI0FallingEdge: 3
       Sampling100Hz: 4
@@ -89,11 +89,11 @@ groupMasks:
     description: Available configuration for the DO0.
     values:
       None: 0
-      MimicAnyInputToggle: 1 #not sure???
-      MimicDI0State: 2
-      Pulse5msAnyInputToggle: 3
-      Pulse2msAnyInputToggle: 4
-      Pulse1msAnyInputToggle: 5
-      Pulse500usAnyInputToggle: 6
-      Pulse250usAnyInputToggle: 7
-      LogicOrInputs: 8 #not sure
+      ToggleOnInputsChange: 1
+      MimicDI0: 2
+      Pulse5msOnInputsChange: 3
+      Pulse2msOnInputsChange: 4
+      Pulse1msOnInputsChange: 5
+      Pulse500usOnInputsChange: 6
+      Pulse250usOnInputsChange: 7
+      AnyInputs: 8
