@@ -18,11 +18,11 @@ registers:
     type: U8
     maskType: DigitalOutputs
     description: Status of the digital output pin 0.
-  SamplingMode:
+  DigitalInputsSamplingMode:
     address: 34
     access: Write
     type: U8
-    maskType: SamplingModeConfig
+    maskType: DigitalInputsSamplingConfig
     description: Sets the sampling mode for digital input pins.
   DO0Config:
     address: 35
@@ -73,7 +73,7 @@ bitMasks:
     bits:
       DigitalInputState: 0x1
 groupMasks:
-  SamplingModeConfig:
+  DigitalInputsSamplingConfig:
     description: Available modes for catching/sampling the digital inputs.
     values:
       None: 0
