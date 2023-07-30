@@ -4,7 +4,7 @@
 device: Synchronizer
 whoAmI: 1104
 firmwareVersion: "1.6"
-hardwareTargets: "1.1" # also 1.0 
+hardwareTargets: "1.1" # also 1.0
 registers:
   DigitalInputState:
     address: 32
@@ -18,42 +18,33 @@ registers:
     type: U8
     maskType: DigitalOutputs
     description: Status of the digital output pin 0.
-  DigitalInputsCatch:
+  DigitalInputsSamplingMode:
     address: 34
     access: Write
     type: U8
-    maskType: DigitalInputsCatchMode
-    description: Sets the catch mode for digital inputs.
+    maskType: DigitalInputsSamplingConfig
+    description: Sets the sampling mode for digital input pins.
   DO0Config:
     address: 35
     access: Write
     type: U8
     maskType: DO0ConfigMode
-    description: Configures how the digital output behaves.
-  Reserved0: 
+    description: Configures how the DO0 pin behaves.
+  Reserved0: &reserved
     address: 36
     type: U8
     access: Read
-    description: Reserved for future use
+    description: Reserved for future use.
     visibility: private
-  Reserved1: 
+  Reserved1:
+    <<: *reserved
     address: 37
-    type: U8
-    access: Read
-    description: Reserved for future use
-    visibility: private
-  Reserved2: 
+  Reserved2:
+    <<: *reserved
     address: 38
-    type: U8
-    access: Read
-    description: Reserved for future use
-    visibility: private
-  Reserved3: 
+  Reserved3:
+    <<: *reserved
     address: 39
-    type: U8
-    access: Read
-    description: Reserved for future use
-    visibility: private
   EnableEvents:
     address: 40
     type: U8
@@ -62,7 +53,7 @@ registers:
     description: Specifies all the active events in the device.
 bitMasks:
   DigitalInputs:
-    description: Specifies the state of port digital input lines.
+    description: Specifies the state of digital input port lines.
     bits:
       DI0: 0x1
       DI1: 0x2
@@ -74,7 +65,7 @@ bitMasks:
       DI7: 0x40
       DI8: 0x80
   DigitalOutputs:
-    description: Specifies the state of the digital output pins.
+    description: Specifies the state of digital output port lines.
     bits:
       DO0: 0x1
   SynchronizerEvents:
@@ -82,11 +73,11 @@ bitMasks:
     bits:
       DigitalInputState: 0x1
 groupMasks:
-  DigitalInputsCatchMode:
-    description: Available modes for catching/sampling the digital inputs. 
+  DigitalInputsSamplingConfig:
+    description: Available modes for catching/sampling the digital inputs.
     values:
       None: 0
-      AnyInputChange: 1
+      InputsChange: 1
       DI0RisingEdge: 2
       DI0FallingEdge: 3
       Sampling100Hz: 4
@@ -95,15 +86,14 @@ groupMasks:
       Sampling1000Hz: 7
       Sampling2000Hz: 8
   DO0ConfigMode:
-    description: Available configuration for the DO0. 
+    description: Available configuration for the DO0.
     values:
       None: 0
-      ToggleAnyInputChange: 1
+      ToggleOnInputsChange: 1
       MimicDI0: 2
-      Pulse5msAnyInputChange: 3
-      Pulse2msAnyInputChange: 4
-      Pulse1msAnyInputChange: 5
-      Pulse500usAnyInputChange: 6
-      Pulse250usAnyInputChange: 7
-      LogicOrInputs: 8
-      
+      Pulse5msOnInputsChange: 3
+      Pulse2msOnInputsChange: 4
+      Pulse1msOnInputsChange: 5
+      Pulse500usOnInputsChange: 6
+      Pulse250usOnInputsChange: 7
+      AnyInputs: 8
