@@ -1,4 +1,5 @@
 using Bonsai.Harp;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Harp.Synchronizer
@@ -47,52 +48,64 @@ namespace Harp.Synchronizer
         /// <summary>
         /// Asynchronously reads the contents of the DigitalInputState register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DigitalInputs> ReadDigitalInputStateAsync()
+        public async Task<DigitalInputs> ReadDigitalInputStateAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputState.Address));
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputState.Address), cancellationToken);
             return DigitalInputState.GetPayload(reply);
         }
 
         /// <summary>
         /// Asynchronously reads the timestamped contents of the DigitalInputState register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DigitalInputs>> ReadTimestampedDigitalInputStateAsync()
+        public async Task<Timestamped<DigitalInputs>> ReadTimestampedDigitalInputStateAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputState.Address));
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputState.Address), cancellationToken);
             return DigitalInputState.GetTimestampedPayload(reply);
         }
 
         /// <summary>
         /// Asynchronously reads the contents of the DigitalOutputState register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DigitalOutputs> ReadDigitalOutputStateAsync()
+        public async Task<DigitalOutputs> ReadDigitalOutputStateAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalOutputState.Address));
+            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalOutputState.Address), cancellationToken);
             return DigitalOutputState.GetPayload(reply);
         }
 
         /// <summary>
         /// Asynchronously reads the timestamped contents of the DigitalOutputState register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DigitalOutputs>> ReadTimestampedDigitalOutputStateAsync()
+        public async Task<Timestamped<DigitalOutputs>> ReadTimestampedDigitalOutputStateAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalOutputState.Address));
+            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalOutputState.Address), cancellationToken);
             return DigitalOutputState.GetTimestampedPayload(reply);
         }
 
@@ -100,73 +113,91 @@ namespace Harp.Synchronizer
         /// Asynchronously writes a value to the DigitalOutputState register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteDigitalOutputStateAsync(DigitalOutputs value)
+        public async Task WriteDigitalOutputStateAsync(DigitalOutputs value, CancellationToken cancellationToken = default)
         {
             var request = DigitalOutputState.FromPayload(MessageType.Write, value);
-            await CommandAsync(request);
+            await CommandAsync(request, cancellationToken);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the DigitalInputsCatch register.
+        /// Asynchronously reads the contents of the DigitalInputsSamplingMode register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DigitalInputsCatchMode> ReadDigitalInputsCatchAsync()
+        public async Task<DigitalInputsSamplingConfig> ReadDigitalInputsSamplingModeAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalInputsCatch.Address));
-            return DigitalInputsCatch.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalInputsSamplingMode.Address), cancellationToken);
+            return DigitalInputsSamplingMode.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the DigitalInputsCatch register.
+        /// Asynchronously reads the timestamped contents of the DigitalInputsSamplingMode register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DigitalInputsCatchMode>> ReadTimestampedDigitalInputsCatchAsync()
+        public async Task<Timestamped<DigitalInputsSamplingConfig>> ReadTimestampedDigitalInputsSamplingModeAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalInputsCatch.Address));
-            return DigitalInputsCatch.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(DigitalInputsSamplingMode.Address), cancellationToken);
+            return DigitalInputsSamplingMode.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the DigitalInputsCatch register.
+        /// Asynchronously writes a value to the DigitalInputsSamplingMode register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteDigitalInputsCatchAsync(DigitalInputsCatchMode value)
+        public async Task WriteDigitalInputsSamplingModeAsync(DigitalInputsSamplingConfig value, CancellationToken cancellationToken = default)
         {
-            var request = DigitalInputsCatch.FromPayload(MessageType.Write, value);
-            await CommandAsync(request);
+            var request = DigitalInputsSamplingMode.FromPayload(MessageType.Write, value);
+            await CommandAsync(request, cancellationToken);
         }
 
         /// <summary>
         /// Asynchronously reads the contents of the DO0Config register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DO0ConfigMode> ReadDO0ConfigAsync()
+        public async Task<DO0ConfigMode> ReadDO0ConfigAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Config.Address));
+            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Config.Address), cancellationToken);
             return DO0Config.GetPayload(reply);
         }
 
         /// <summary>
         /// Asynchronously reads the timestamped contents of the DO0Config register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DO0ConfigMode>> ReadTimestampedDO0ConfigAsync()
+        public async Task<Timestamped<DO0ConfigMode>> ReadTimestampedDO0ConfigAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Config.Address));
+            var reply = await CommandAsync(HarpCommand.ReadByte(DO0Config.Address), cancellationToken);
             return DO0Config.GetTimestampedPayload(reply);
         }
 
@@ -174,36 +205,45 @@ namespace Harp.Synchronizer
         /// Asynchronously writes a value to the DO0Config register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteDO0ConfigAsync(DO0ConfigMode value)
+        public async Task WriteDO0ConfigAsync(DO0ConfigMode value, CancellationToken cancellationToken = default)
         {
             var request = DO0Config.FromPayload(MessageType.Write, value);
-            await CommandAsync(request);
+            await CommandAsync(request, cancellationToken);
         }
 
         /// <summary>
         /// Asynchronously reads the contents of the EnableEvents register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<SynchronizerEvents> ReadEnableEventsAsync()
+        public async Task<SynchronizerEvents> ReadEnableEventsAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(EnableEvents.Address));
+            var reply = await CommandAsync(HarpCommand.ReadByte(EnableEvents.Address), cancellationToken);
             return EnableEvents.GetPayload(reply);
         }
 
         /// <summary>
         /// Asynchronously reads the timestamped contents of the EnableEvents register.
         /// </summary>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<SynchronizerEvents>> ReadTimestampedEnableEventsAsync()
+        public async Task<Timestamped<SynchronizerEvents>> ReadTimestampedEnableEventsAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(EnableEvents.Address));
+            var reply = await CommandAsync(HarpCommand.ReadByte(EnableEvents.Address), cancellationToken);
             return EnableEvents.GetTimestampedPayload(reply);
         }
 
@@ -211,11 +251,14 @@ namespace Harp.Synchronizer
         /// Asynchronously writes a value to the EnableEvents register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
+        /// </param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteEnableEventsAsync(SynchronizerEvents value)
+        public async Task WriteEnableEventsAsync(SynchronizerEvents value, CancellationToken cancellationToken = default)
         {
             var request = EnableEvents.FromPayload(MessageType.Write, value);
-            await CommandAsync(request);
+            await CommandAsync(request, cancellationToken);
         }
     }
 }

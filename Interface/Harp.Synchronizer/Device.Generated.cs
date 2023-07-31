@@ -39,7 +39,7 @@ namespace Harp.Synchronizer
         {
             { 32, typeof(DigitalInputState) },
             { 33, typeof(DigitalOutputState) },
-            { 34, typeof(DigitalInputsCatch) },
+            { 34, typeof(DigitalInputsSamplingMode) },
             { 35, typeof(DO0Config) },
             { 40, typeof(EnableEvents) }
         };
@@ -72,21 +72,21 @@ namespace Harp.Synchronizer
     /// </summary>
     /// <seealso cref="DigitalInputState"/>
     /// <seealso cref="DigitalOutputState"/>
-    /// <seealso cref="DigitalInputsCatch"/>
+    /// <seealso cref="DigitalInputsSamplingMode"/>
     /// <seealso cref="DO0Config"/>
     /// <seealso cref="EnableEvents"/>
     [XmlInclude(typeof(DigitalInputState))]
     [XmlInclude(typeof(DigitalOutputState))]
-    [XmlInclude(typeof(DigitalInputsCatch))]
+    [XmlInclude(typeof(DigitalInputsSamplingMode))]
     [XmlInclude(typeof(DO0Config))]
     [XmlInclude(typeof(EnableEvents))]
     [Description("Filters register-specific messages reported by the Synchronizer device.")]
-    public class FilterMessage : FilterMessageBuilder, INamedElement
+    public class FilterRegister : FilterRegisterBuilder, INamedElement
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilterMessage"/> class.
+        /// Initializes a new instance of the <see cref="FilterRegister"/> class.
         /// </summary>
-        public FilterMessage()
+        public FilterRegister()
         {
             Register = new DigitalInputState();
         }
@@ -103,17 +103,17 @@ namespace Harp.Synchronizer
     /// </summary>
     /// <seealso cref="DigitalInputState"/>
     /// <seealso cref="DigitalOutputState"/>
-    /// <seealso cref="DigitalInputsCatch"/>
+    /// <seealso cref="DigitalInputsSamplingMode"/>
     /// <seealso cref="DO0Config"/>
     /// <seealso cref="EnableEvents"/>
     [XmlInclude(typeof(DigitalInputState))]
     [XmlInclude(typeof(DigitalOutputState))]
-    [XmlInclude(typeof(DigitalInputsCatch))]
+    [XmlInclude(typeof(DigitalInputsSamplingMode))]
     [XmlInclude(typeof(DO0Config))]
     [XmlInclude(typeof(EnableEvents))]
     [XmlInclude(typeof(TimestampedDigitalInputState))]
     [XmlInclude(typeof(TimestampedDigitalOutputState))]
-    [XmlInclude(typeof(TimestampedDigitalInputsCatch))]
+    [XmlInclude(typeof(TimestampedDigitalInputsSamplingMode))]
     [XmlInclude(typeof(TimestampedDO0Config))]
     [XmlInclude(typeof(TimestampedEnableEvents))]
     [Description("Filters and selects specific messages reported by the Synchronizer device.")]
@@ -136,12 +136,12 @@ namespace Harp.Synchronizer
     /// </summary>
     /// <seealso cref="DigitalInputState"/>
     /// <seealso cref="DigitalOutputState"/>
-    /// <seealso cref="DigitalInputsCatch"/>
+    /// <seealso cref="DigitalInputsSamplingMode"/>
     /// <seealso cref="DO0Config"/>
     /// <seealso cref="EnableEvents"/>
     [XmlInclude(typeof(DigitalInputState))]
     [XmlInclude(typeof(DigitalOutputState))]
-    [XmlInclude(typeof(DigitalInputsCatch))]
+    [XmlInclude(typeof(DigitalInputsSamplingMode))]
     [XmlInclude(typeof(DO0Config))]
     [XmlInclude(typeof(EnableEvents))]
     [Description("Formats a sequence of values as specific Synchronizer register messages.")]
@@ -353,73 +353,73 @@ namespace Harp.Synchronizer
     }
 
     /// <summary>
-    /// Represents a register that sets the catch mode for digital inputs.
+    /// Represents a register that sets the sampling mode for digital input pins.
     /// </summary>
-    [Description("Sets the catch mode for digital inputs.")]
-    public partial class DigitalInputsCatch
+    [Description("Sets the sampling mode for digital input pins.")]
+    public partial class DigitalInputsSamplingMode
     {
         /// <summary>
-        /// Represents the address of the <see cref="DigitalInputsCatch"/> register. This field is constant.
+        /// Represents the address of the <see cref="DigitalInputsSamplingMode"/> register. This field is constant.
         /// </summary>
         public const int Address = 34;
 
         /// <summary>
-        /// Represents the payload type of the <see cref="DigitalInputsCatch"/> register. This field is constant.
+        /// Represents the payload type of the <see cref="DigitalInputsSamplingMode"/> register. This field is constant.
         /// </summary>
         public const PayloadType RegisterType = PayloadType.U8;
 
         /// <summary>
-        /// Represents the length of the <see cref="DigitalInputsCatch"/> register. This field is constant.
+        /// Represents the length of the <see cref="DigitalInputsSamplingMode"/> register. This field is constant.
         /// </summary>
         public const int RegisterLength = 1;
 
         /// <summary>
-        /// Returns the payload data for <see cref="DigitalInputsCatch"/> register messages.
+        /// Returns the payload data for <see cref="DigitalInputsSamplingMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the message payload.</returns>
-        public static DigitalInputsCatchMode GetPayload(HarpMessage message)
+        public static DigitalInputsSamplingConfig GetPayload(HarpMessage message)
         {
-            return (DigitalInputsCatchMode)message.GetPayloadByte();
+            return (DigitalInputsSamplingConfig)message.GetPayloadByte();
         }
 
         /// <summary>
-        /// Returns the timestamped payload data for <see cref="DigitalInputsCatch"/> register messages.
+        /// Returns the timestamped payload data for <see cref="DigitalInputsSamplingMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<DigitalInputsCatchMode> GetTimestampedPayload(HarpMessage message)
+        public static Timestamped<DigitalInputsSamplingConfig> GetTimestampedPayload(HarpMessage message)
         {
             var payload = message.GetTimestampedPayloadByte();
-            return Timestamped.Create((DigitalInputsCatchMode)payload.Value, payload.Seconds);
+            return Timestamped.Create((DigitalInputsSamplingConfig)payload.Value, payload.Seconds);
         }
 
         /// <summary>
-        /// Returns a Harp message for the <see cref="DigitalInputsCatch"/> register.
+        /// Returns a Harp message for the <see cref="DigitalInputsSamplingMode"/> register.
         /// </summary>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="DigitalInputsCatch"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="DigitalInputsSamplingMode"/> register
         /// with the specified message type and payload.
         /// </returns>
-        public static HarpMessage FromPayload(MessageType messageType, DigitalInputsCatchMode value)
+        public static HarpMessage FromPayload(MessageType messageType, DigitalInputsSamplingConfig value)
         {
             return HarpMessage.FromByte(Address, messageType, (byte)value);
         }
 
         /// <summary>
-        /// Returns a timestamped Harp message for the <see cref="DigitalInputsCatch"/>
+        /// Returns a timestamped Harp message for the <see cref="DigitalInputsSamplingMode"/>
         /// register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="DigitalInputsCatch"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="DigitalInputsSamplingMode"/> register
         /// with the specified message type, timestamp, and payload.
         /// </returns>
-        public static HarpMessage FromPayload(double timestamp, MessageType messageType, DigitalInputsCatchMode value)
+        public static HarpMessage FromPayload(double timestamp, MessageType messageType, DigitalInputsSamplingConfig value)
         {
             return HarpMessage.FromByte(Address, timestamp, messageType, (byte)value);
         }
@@ -427,32 +427,32 @@ namespace Harp.Synchronizer
 
     /// <summary>
     /// Provides methods for manipulating timestamped messages from the
-    /// DigitalInputsCatch register.
+    /// DigitalInputsSamplingMode register.
     /// </summary>
-    /// <seealso cref="DigitalInputsCatch"/>
-    [Description("Filters and selects timestamped messages from the DigitalInputsCatch register.")]
-    public partial class TimestampedDigitalInputsCatch
+    /// <seealso cref="DigitalInputsSamplingMode"/>
+    [Description("Filters and selects timestamped messages from the DigitalInputsSamplingMode register.")]
+    public partial class TimestampedDigitalInputsSamplingMode
     {
         /// <summary>
-        /// Represents the address of the <see cref="DigitalInputsCatch"/> register. This field is constant.
+        /// Represents the address of the <see cref="DigitalInputsSamplingMode"/> register. This field is constant.
         /// </summary>
-        public const int Address = DigitalInputsCatch.Address;
+        public const int Address = DigitalInputsSamplingMode.Address;
 
         /// <summary>
-        /// Returns timestamped payload data for <see cref="DigitalInputsCatch"/> register messages.
+        /// Returns timestamped payload data for <see cref="DigitalInputsSamplingMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<DigitalInputsCatchMode> GetPayload(HarpMessage message)
+        public static Timestamped<DigitalInputsSamplingConfig> GetPayload(HarpMessage message)
         {
-            return DigitalInputsCatch.GetTimestampedPayload(message);
+            return DigitalInputsSamplingMode.GetTimestampedPayload(message);
         }
     }
 
     /// <summary>
-    /// Represents a register that configures how the digital output behaves.
+    /// Represents a register that configures how the DO0 pin behaves.
     /// </summary>
-    [Description("Configures how the digital output behaves.")]
+    [Description("Configures how the DO0 pin behaves.")]
     public partial class DO0Config
     {
         /// <summary>
@@ -649,14 +649,19 @@ namespace Harp.Synchronizer
     /// </summary>
     /// <seealso cref="CreateDigitalInputStatePayload"/>
     /// <seealso cref="CreateDigitalOutputStatePayload"/>
-    /// <seealso cref="CreateDigitalInputsCatchPayload"/>
+    /// <seealso cref="CreateDigitalInputsSamplingModePayload"/>
     /// <seealso cref="CreateDO0ConfigPayload"/>
     /// <seealso cref="CreateEnableEventsPayload"/>
     [XmlInclude(typeof(CreateDigitalInputStatePayload))]
     [XmlInclude(typeof(CreateDigitalOutputStatePayload))]
-    [XmlInclude(typeof(CreateDigitalInputsCatchPayload))]
+    [XmlInclude(typeof(CreateDigitalInputsSamplingModePayload))]
     [XmlInclude(typeof(CreateDO0ConfigPayload))]
     [XmlInclude(typeof(CreateEnableEventsPayload))]
+    [XmlInclude(typeof(CreateTimestampedDigitalInputStatePayload))]
+    [XmlInclude(typeof(CreateTimestampedDigitalOutputStatePayload))]
+    [XmlInclude(typeof(CreateTimestampedDigitalInputsSamplingModePayload))]
+    [XmlInclude(typeof(CreateTimestampedDO0ConfigPayload))]
+    [XmlInclude(typeof(CreateTimestampedEnableEventsPayload))]
     [Description("Creates standard message payloads for the Synchronizer device.")]
     public partial class CreateMessage : CreateMessageBuilder, INamedElement
     {
@@ -672,251 +677,282 @@ namespace Harp.Synchronizer
     }
 
     /// <summary>
-    /// Represents an operator that creates a sequence of message payloads
+    /// Represents an operator that creates a message payload
     /// that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.
     /// </summary>
     [DisplayName("DigitalInputStatePayload")]
-    [WorkflowElementCategory(ElementCategory.Transform)]
-    [Description("Creates a sequence of message payloads that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.")]
-    public partial class CreateDigitalInputStatePayload : HarpCombinator
+    [Description("Creates a message payload that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.")]
+    public partial class CreateDigitalInputStatePayload
     {
         /// <summary>
         /// Gets or sets the value that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.
         /// </summary>
         [Description("The value that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.")]
-        public DigitalInputs Value { get; set; }
+        public DigitalInputs DigitalInputState { get; set; }
 
         /// <summary>
-        /// Creates an observable sequence that contains a single message
-        /// that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.
+        /// Creates a message payload for the DigitalInputState register.
         /// </summary>
-        /// <returns>
-        /// A sequence containing a single <see cref="HarpMessage"/> object
-        /// representing the created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process()
+        /// <returns>The created message payload value.</returns>
+        public DigitalInputs GetPayload()
         {
-            return Process(Observable.Return(System.Reactive.Unit.Default));
+            return DigitalInputState;
         }
 
         /// <summary>
-        /// Creates an observable sequence of message payloads
-        /// that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.
+        /// Creates a message that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.
         /// </summary>
-        /// <typeparam name="TSource">
-        /// The type of the elements in the <paramref name="source"/> sequence.
-        /// </typeparam>
-        /// <param name="source">
-        /// The sequence containing the notifications used for emitting message payloads.
-        /// </param>
-        /// <returns>
-        /// A sequence of <see cref="HarpMessage"/> objects representing each
-        /// created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process<TSource>(IObservable<TSource> source)
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new message for the DigitalInputState register.</returns>
+        public HarpMessage GetMessage(MessageType messageType)
         {
-            return source.Select(_ => DigitalInputState.FromPayload(MessageType, Value));
+            return Harp.Synchronizer.DigitalInputState.FromPayload(messageType, GetPayload());
         }
     }
 
     /// <summary>
-    /// Represents an operator that creates a sequence of message payloads
+    /// Represents an operator that creates a timestamped message payload
+    /// that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.
+    /// </summary>
+    [DisplayName("TimestampedDigitalInputStatePayload")]
+    [Description("Creates a timestamped message payload that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.")]
+    public partial class CreateTimestampedDigitalInputStatePayload : CreateDigitalInputStatePayload
+    {
+        /// <summary>
+        /// Creates a timestamped message that state of the digital input pins. An event will be emitted when the value of any digital input pin changes.
+        /// </summary>
+        /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new timestamped message for the DigitalInputState register.</returns>
+        public HarpMessage GetMessage(double timestamp, MessageType messageType)
+        {
+            return Harp.Synchronizer.DigitalInputState.FromPayload(timestamp, messageType, GetPayload());
+        }
+    }
+
+    /// <summary>
+    /// Represents an operator that creates a message payload
     /// that status of the digital output pin 0.
     /// </summary>
     [DisplayName("DigitalOutputStatePayload")]
-    [WorkflowElementCategory(ElementCategory.Transform)]
-    [Description("Creates a sequence of message payloads that status of the digital output pin 0.")]
-    public partial class CreateDigitalOutputStatePayload : HarpCombinator
+    [Description("Creates a message payload that status of the digital output pin 0.")]
+    public partial class CreateDigitalOutputStatePayload
     {
         /// <summary>
         /// Gets or sets the value that status of the digital output pin 0.
         /// </summary>
         [Description("The value that status of the digital output pin 0.")]
-        public DigitalOutputs Value { get; set; }
+        public DigitalOutputs DigitalOutputState { get; set; }
 
         /// <summary>
-        /// Creates an observable sequence that contains a single message
-        /// that status of the digital output pin 0.
+        /// Creates a message payload for the DigitalOutputState register.
         /// </summary>
-        /// <returns>
-        /// A sequence containing a single <see cref="HarpMessage"/> object
-        /// representing the created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process()
+        /// <returns>The created message payload value.</returns>
+        public DigitalOutputs GetPayload()
         {
-            return Process(Observable.Return(System.Reactive.Unit.Default));
+            return DigitalOutputState;
         }
 
         /// <summary>
-        /// Creates an observable sequence of message payloads
-        /// that status of the digital output pin 0.
+        /// Creates a message that status of the digital output pin 0.
         /// </summary>
-        /// <typeparam name="TSource">
-        /// The type of the elements in the <paramref name="source"/> sequence.
-        /// </typeparam>
-        /// <param name="source">
-        /// The sequence containing the notifications used for emitting message payloads.
-        /// </param>
-        /// <returns>
-        /// A sequence of <see cref="HarpMessage"/> objects representing each
-        /// created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process<TSource>(IObservable<TSource> source)
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new message for the DigitalOutputState register.</returns>
+        public HarpMessage GetMessage(MessageType messageType)
         {
-            return source.Select(_ => DigitalOutputState.FromPayload(MessageType, Value));
+            return Harp.Synchronizer.DigitalOutputState.FromPayload(messageType, GetPayload());
         }
     }
 
     /// <summary>
-    /// Represents an operator that creates a sequence of message payloads
-    /// that sets the catch mode for digital inputs.
+    /// Represents an operator that creates a timestamped message payload
+    /// that status of the digital output pin 0.
     /// </summary>
-    [DisplayName("DigitalInputsCatchPayload")]
-    [WorkflowElementCategory(ElementCategory.Transform)]
-    [Description("Creates a sequence of message payloads that sets the catch mode for digital inputs.")]
-    public partial class CreateDigitalInputsCatchPayload : HarpCombinator
+    [DisplayName("TimestampedDigitalOutputStatePayload")]
+    [Description("Creates a timestamped message payload that status of the digital output pin 0.")]
+    public partial class CreateTimestampedDigitalOutputStatePayload : CreateDigitalOutputStatePayload
     {
         /// <summary>
-        /// Gets or sets the value that sets the catch mode for digital inputs.
+        /// Creates a timestamped message that status of the digital output pin 0.
         /// </summary>
-        [Description("The value that sets the catch mode for digital inputs.")]
-        public DigitalInputsCatchMode Value { get; set; }
-
-        /// <summary>
-        /// Creates an observable sequence that contains a single message
-        /// that sets the catch mode for digital inputs.
-        /// </summary>
-        /// <returns>
-        /// A sequence containing a single <see cref="HarpMessage"/> object
-        /// representing the created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process()
+        /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new timestamped message for the DigitalOutputState register.</returns>
+        public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Process(Observable.Return(System.Reactive.Unit.Default));
-        }
-
-        /// <summary>
-        /// Creates an observable sequence of message payloads
-        /// that sets the catch mode for digital inputs.
-        /// </summary>
-        /// <typeparam name="TSource">
-        /// The type of the elements in the <paramref name="source"/> sequence.
-        /// </typeparam>
-        /// <param name="source">
-        /// The sequence containing the notifications used for emitting message payloads.
-        /// </param>
-        /// <returns>
-        /// A sequence of <see cref="HarpMessage"/> objects representing each
-        /// created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process<TSource>(IObservable<TSource> source)
-        {
-            return source.Select(_ => DigitalInputsCatch.FromPayload(MessageType, Value));
+            return Harp.Synchronizer.DigitalOutputState.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
     /// <summary>
-    /// Represents an operator that creates a sequence of message payloads
-    /// that configures how the digital output behaves.
+    /// Represents an operator that creates a message payload
+    /// that sets the sampling mode for digital input pins.
+    /// </summary>
+    [DisplayName("DigitalInputsSamplingModePayload")]
+    [Description("Creates a message payload that sets the sampling mode for digital input pins.")]
+    public partial class CreateDigitalInputsSamplingModePayload
+    {
+        /// <summary>
+        /// Gets or sets the value that sets the sampling mode for digital input pins.
+        /// </summary>
+        [Description("The value that sets the sampling mode for digital input pins.")]
+        public DigitalInputsSamplingConfig DigitalInputsSamplingMode { get; set; }
+
+        /// <summary>
+        /// Creates a message payload for the DigitalInputsSamplingMode register.
+        /// </summary>
+        /// <returns>The created message payload value.</returns>
+        public DigitalInputsSamplingConfig GetPayload()
+        {
+            return DigitalInputsSamplingMode;
+        }
+
+        /// <summary>
+        /// Creates a message that sets the sampling mode for digital input pins.
+        /// </summary>
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new message for the DigitalInputsSamplingMode register.</returns>
+        public HarpMessage GetMessage(MessageType messageType)
+        {
+            return Harp.Synchronizer.DigitalInputsSamplingMode.FromPayload(messageType, GetPayload());
+        }
+    }
+
+    /// <summary>
+    /// Represents an operator that creates a timestamped message payload
+    /// that sets the sampling mode for digital input pins.
+    /// </summary>
+    [DisplayName("TimestampedDigitalInputsSamplingModePayload")]
+    [Description("Creates a timestamped message payload that sets the sampling mode for digital input pins.")]
+    public partial class CreateTimestampedDigitalInputsSamplingModePayload : CreateDigitalInputsSamplingModePayload
+    {
+        /// <summary>
+        /// Creates a timestamped message that sets the sampling mode for digital input pins.
+        /// </summary>
+        /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new timestamped message for the DigitalInputsSamplingMode register.</returns>
+        public HarpMessage GetMessage(double timestamp, MessageType messageType)
+        {
+            return Harp.Synchronizer.DigitalInputsSamplingMode.FromPayload(timestamp, messageType, GetPayload());
+        }
+    }
+
+    /// <summary>
+    /// Represents an operator that creates a message payload
+    /// that configures how the DO0 pin behaves.
     /// </summary>
     [DisplayName("DO0ConfigPayload")]
-    [WorkflowElementCategory(ElementCategory.Transform)]
-    [Description("Creates a sequence of message payloads that configures how the digital output behaves.")]
-    public partial class CreateDO0ConfigPayload : HarpCombinator
+    [Description("Creates a message payload that configures how the DO0 pin behaves.")]
+    public partial class CreateDO0ConfigPayload
     {
         /// <summary>
-        /// Gets or sets the value that configures how the digital output behaves.
+        /// Gets or sets the value that configures how the DO0 pin behaves.
         /// </summary>
-        [Description("The value that configures how the digital output behaves.")]
-        public DO0ConfigMode Value { get; set; }
+        [Description("The value that configures how the DO0 pin behaves.")]
+        public DO0ConfigMode DO0Config { get; set; }
 
         /// <summary>
-        /// Creates an observable sequence that contains a single message
-        /// that configures how the digital output behaves.
+        /// Creates a message payload for the DO0Config register.
         /// </summary>
-        /// <returns>
-        /// A sequence containing a single <see cref="HarpMessage"/> object
-        /// representing the created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process()
+        /// <returns>The created message payload value.</returns>
+        public DO0ConfigMode GetPayload()
         {
-            return Process(Observable.Return(System.Reactive.Unit.Default));
+            return DO0Config;
         }
 
         /// <summary>
-        /// Creates an observable sequence of message payloads
-        /// that configures how the digital output behaves.
+        /// Creates a message that configures how the DO0 pin behaves.
         /// </summary>
-        /// <typeparam name="TSource">
-        /// The type of the elements in the <paramref name="source"/> sequence.
-        /// </typeparam>
-        /// <param name="source">
-        /// The sequence containing the notifications used for emitting message payloads.
-        /// </param>
-        /// <returns>
-        /// A sequence of <see cref="HarpMessage"/> objects representing each
-        /// created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process<TSource>(IObservable<TSource> source)
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new message for the DO0Config register.</returns>
+        public HarpMessage GetMessage(MessageType messageType)
         {
-            return source.Select(_ => DO0Config.FromPayload(MessageType, Value));
+            return Harp.Synchronizer.DO0Config.FromPayload(messageType, GetPayload());
         }
     }
 
     /// <summary>
-    /// Represents an operator that creates a sequence of message payloads
+    /// Represents an operator that creates a timestamped message payload
+    /// that configures how the DO0 pin behaves.
+    /// </summary>
+    [DisplayName("TimestampedDO0ConfigPayload")]
+    [Description("Creates a timestamped message payload that configures how the DO0 pin behaves.")]
+    public partial class CreateTimestampedDO0ConfigPayload : CreateDO0ConfigPayload
+    {
+        /// <summary>
+        /// Creates a timestamped message that configures how the DO0 pin behaves.
+        /// </summary>
+        /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new timestamped message for the DO0Config register.</returns>
+        public HarpMessage GetMessage(double timestamp, MessageType messageType)
+        {
+            return Harp.Synchronizer.DO0Config.FromPayload(timestamp, messageType, GetPayload());
+        }
+    }
+
+    /// <summary>
+    /// Represents an operator that creates a message payload
     /// that specifies all the active events in the device.
     /// </summary>
     [DisplayName("EnableEventsPayload")]
-    [WorkflowElementCategory(ElementCategory.Transform)]
-    [Description("Creates a sequence of message payloads that specifies all the active events in the device.")]
-    public partial class CreateEnableEventsPayload : HarpCombinator
+    [Description("Creates a message payload that specifies all the active events in the device.")]
+    public partial class CreateEnableEventsPayload
     {
         /// <summary>
         /// Gets or sets the value that specifies all the active events in the device.
         /// </summary>
         [Description("The value that specifies all the active events in the device.")]
-        public SynchronizerEvents Value { get; set; }
+        public SynchronizerEvents EnableEvents { get; set; }
 
         /// <summary>
-        /// Creates an observable sequence that contains a single message
-        /// that specifies all the active events in the device.
+        /// Creates a message payload for the EnableEvents register.
         /// </summary>
-        /// <returns>
-        /// A sequence containing a single <see cref="HarpMessage"/> object
-        /// representing the created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process()
+        /// <returns>The created message payload value.</returns>
+        public SynchronizerEvents GetPayload()
         {
-            return Process(Observable.Return(System.Reactive.Unit.Default));
+            return EnableEvents;
         }
 
         /// <summary>
-        /// Creates an observable sequence of message payloads
-        /// that specifies all the active events in the device.
+        /// Creates a message that specifies all the active events in the device.
         /// </summary>
-        /// <typeparam name="TSource">
-        /// The type of the elements in the <paramref name="source"/> sequence.
-        /// </typeparam>
-        /// <param name="source">
-        /// The sequence containing the notifications used for emitting message payloads.
-        /// </param>
-        /// <returns>
-        /// A sequence of <see cref="HarpMessage"/> objects representing each
-        /// created message payload.
-        /// </returns>
-        public IObservable<HarpMessage> Process<TSource>(IObservable<TSource> source)
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new message for the EnableEvents register.</returns>
+        public HarpMessage GetMessage(MessageType messageType)
         {
-            return source.Select(_ => EnableEvents.FromPayload(MessageType, Value));
+            return Harp.Synchronizer.EnableEvents.FromPayload(messageType, GetPayload());
         }
     }
 
     /// <summary>
-    /// Specifies the state of port digital input lines.
+    /// Represents an operator that creates a timestamped message payload
+    /// that specifies all the active events in the device.
+    /// </summary>
+    [DisplayName("TimestampedEnableEventsPayload")]
+    [Description("Creates a timestamped message payload that specifies all the active events in the device.")]
+    public partial class CreateTimestampedEnableEventsPayload : CreateEnableEventsPayload
+    {
+        /// <summary>
+        /// Creates a timestamped message that specifies all the active events in the device.
+        /// </summary>
+        /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
+        /// <param name="messageType">Specifies the type of the created message.</param>
+        /// <returns>A new timestamped message for the EnableEvents register.</returns>
+        public HarpMessage GetMessage(double timestamp, MessageType messageType)
+        {
+            return Harp.Synchronizer.EnableEvents.FromPayload(timestamp, messageType, GetPayload());
+        }
+    }
+
+    /// <summary>
+    /// Specifies the state of digital input port lines.
     /// </summary>
     [Flags]
     public enum DigitalInputs : byte
     {
+        None = 0x0,
         DI0 = 0x1,
         DI1 = 0x2,
         DI2 = 0x3,
@@ -929,11 +965,12 @@ namespace Harp.Synchronizer
     }
 
     /// <summary>
-    /// Specifies the state of the digital output pins.
+    /// Specifies the state of digital output port lines.
     /// </summary>
     [Flags]
     public enum DigitalOutputs : byte
     {
+        None = 0x0,
         DO0 = 0x1
     }
 
@@ -943,16 +980,17 @@ namespace Harp.Synchronizer
     [Flags]
     public enum SynchronizerEvents : byte
     {
+        None = 0x0,
         DigitalInputState = 0x1
     }
 
     /// <summary>
     /// Available modes for catching/sampling the digital inputs.
     /// </summary>
-    public enum DigitalInputsCatchMode : byte
+    public enum DigitalInputsSamplingConfig : byte
     {
         None = 0,
-        AnyInputChange = 1,
+        InputsChange = 1,
         DI0RisingEdge = 2,
         DI0FallingEdge = 3,
         Sampling100Hz = 4,
@@ -968,13 +1006,13 @@ namespace Harp.Synchronizer
     public enum DO0ConfigMode : byte
     {
         None = 0,
-        ToggleAnyInputChange = 1,
+        ToggleOnInputsChange = 1,
         MimicDI0 = 2,
-        Pulse5msAnyInputChange = 3,
-        Pulse2msAnyInputChange = 4,
-        Pulse1msAnyInputChange = 5,
-        Pulse500usAnyInputChange = 6,
-        Pulse250usAnyInputChange = 7,
-        LogicOrInputs = 8
+        Pulse5msOnInputsChange = 3,
+        Pulse2msOnInputsChange = 4,
+        Pulse1msOnInputsChange = 5,
+        Pulse500usOnInputsChange = 6,
+        Pulse250usOnInputsChange = 7,
+        AnyInputs = 8
     }
 }
