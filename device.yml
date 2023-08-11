@@ -4,7 +4,7 @@
 device: Synchronizer
 whoAmI: 1104
 firmwareVersion: "1.6"
-hardwareTargets: "1.1" # also 1.0
+hardwareTargets: "1.0"
 registers:
   DigitalInputState:
     address: 32
