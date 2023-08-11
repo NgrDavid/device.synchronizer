@@ -28,15 +28,15 @@
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <AsfFrameworkConfig>
       <framework-data>
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.40.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.40.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
     <avrtoolinterface>PDI</avrtoolinterface>
@@ -82,7 +82,6 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
-      <Value>libATxmega32A4U-1.6.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
@@ -131,16 +130,12 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
-      <Value>libATxmega32A4U-1.6.a</Value>
+      <Value>libATxmega32A4U-1.13.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
     <ListValues>
-      <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware_\Synchronizer\Synchronizer\Synchronizer</Value>
-      <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware_\Synchronizer\Synchronizer</Value>
-      <Value>C:\Users\Filipe Carvalho\Documents\BitBucket\Device.Synchronizer\Firmware\Synchronizer</Value>
-      <Value>C:\FChampalimaud\harp\device.synchronizer\Firmware\Synchronizer</Value>
-      <Value>C:\FChampalimaud\harp\Devices\device.pump\Firmware\Pump</Value>
+      <Value>..</Value>
     </ListValues>
   </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.assembler.general.IncludePaths>
