@@ -3,7 +3,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/harp-tech/reflex-generator/main/schema/device.json
 device: Synchronizer
 whoAmI: 1104
-firmwareVersion: "1.6"
+firmwareVersion: "1.7"
 hardwareTargets: "1.0"
 registers:
   DigitalInputState:
